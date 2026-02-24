@@ -1,0 +1,23 @@
+<h1 class="mb-3">Posts by <%= user.username %></h1>
+
+<a class="btn btn-outline-secondary btn-sm mb-3" href="/posts">← All posts</a>
+
+<% if (!posts || posts.length === 0) { %>
+  <p>No posts yet.</p>
+<% } else { %>
+  <% posts.forEach((p) => { %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title mb-1">
+          <a href="/posts/<%= p._id %>"><%= p.title %></a>
+        </h5>
+
+        <small class="text-muted"><%= new Date(p.createdAt).toLocaleString() %></small>
+
+        <p class="card-text mt-2">
+          <%= (p.content || "").slice(0, 180) %><%= (p.content || "").length > 180 ? "..." : "" %>
+        </p>
+      </div>
+    </div>
+  <% }) %>
+<% } %>

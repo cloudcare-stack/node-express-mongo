@@ -1,6 +1,5 @@
 <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
-  <div class="col-md-5 col-lg-8">
-
+  <div class="col-md-5 col-lg-4">
     <div class="card shadow-sm p-4">
       <h2 class="text-center mb-4">Register</h2>
 
@@ -9,21 +8,46 @@
       <% } %>
 
       <form method="POST" action="/register" class="vstack gap-3">
-
         <div>
           <label class="form-label">Username</label>
-          <input class="form-control" name="username" required value="<%= form.username || '' %>">
+          <input
+            class="form-control <%= errors.username ? 'is-invalid' : '' %>"
+            name="username"
+            required
+            value="<%= form.username || '' %>"
+          >
+          <% if (errors.username) { %>
+            <div class="invalid-feedback"><%= errors.username %></div>
+          <% } %>
         </div>
 
         <div>
           <label class="form-label">Email</label>
-          <input class="form-control" type="email" name="email" required value="<%= form.email || '' %>">
+          <input
+            class="form-control <%= errors.email ? 'is-invalid' : '' %>"
+            type="email"
+            name="email"
+            required
+            value="<%= form.email || '' %>"
+          >
+          <% if (errors.email) { %>
+            <div class="invalid-feedback"><%= errors.email %></div>
+          <% } %>
         </div>
 
         <div>
           <label class="form-label">Password</label>
-          <input class="form-control" type="password" name="password" required>
-          <div class="form-text">At least 6 characters.</div>
+          <input
+            class="form-control <%= errors.password ? 'is-invalid' : '' %>"
+            type="password"
+            name="password"
+            required
+          >
+          <% if (errors.password) { %>
+            <div class="invalid-feedback"><%= errors.password %></div>
+          <% } else { %>
+            <div class="form-text">At least 6 characters.</div>
+          <% } %>
         </div>
 
         <button class="btn btn-primary w-100" type="submit">Create Account</button>
@@ -31,9 +55,7 @@
         <div class="text-center mt-2">
           <small>Already have an account? <a href="/login">Login</a></small>
         </div>
-
       </form>
     </div>
-
   </div>
 </div>

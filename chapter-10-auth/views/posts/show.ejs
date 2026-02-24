@@ -1,6 +1,9 @@
+<% const isOwner = currentUser && String(post.author._id) === String(currentUser.id); %>
 <article class="post">
   <h1 class="mb-1"><%= post.title %></h1>
-
+  <small class="text-muted">
+    By <a href="/users/<%= post.author._id %>/posts"><%= post.author.username %></a>
+  </small>
   <div class="text-muted mb-3">
     <small>Created: <%= new Date(post.createdAt).toLocaleString() %></small>
     <% if (post.updatedAt && post.updatedAt !== post.createdAt) { %>
@@ -24,15 +27,18 @@
 
   <div class="d-flex gap-2 mt-4">
     <a class="btn btn-outline-secondary btn-sm" href="/posts">← All posts</a>
-    <a class="btn btn-warning btn-sm" href="/posts/<%= post._id %>/edit">Edit</a>
 
-    <form
-      method="POST"
-      action="/posts/<%= post._id %>/delete"
-      onsubmit="return confirm('Delete this post?');"
-      class="ms-auto"
-    >
-      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-    </form>
+    <% if (isOwner) { %>
+      <a class="btn btn-warning btn-sm" href="/posts/<%= post._id %>/edit">Edit</a>
+
+      <form
+        method="POST"
+        action="/posts/<%= post._id %>/delete"
+        class="m-0"
+        onsubmit="return confirm('Delete this post?');"
+      >
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+    <% } %>
   </div>
 </article>

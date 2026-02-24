@@ -5,6 +5,7 @@ const pagesRoutes = require("./routes/pages");
 const postsRoutes = require("./routes/posts");
 const apiPostsRoutes = require("./routes/api/posts");
 const authRoutes = require("./routes/auth");
+const usersRoutes = require("./routes/users");
 
 const expressLayouts = require("express-ejs-layouts");
 
@@ -56,6 +57,7 @@ app.use(authRoutes);
 app.use(pagesRoutes);
 app.use(postsRoutes);
 app.use("/api", apiPostsRoutes);
+app.use(usersRoutes);
 
 // 404 (must be last)
 app.use((req, res) => {
