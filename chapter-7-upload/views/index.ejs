@@ -1,0 +1,12 @@
+<h1 class="mb-4">All Posts</h1>
+
+<% posts.forEach(post => { %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"><%= post.content.substring(0, 150) %>...</p>
+      <a href="/posts/<%= post._id %>" class="btn btn-primary btn-sm">Read More</a>
+      <a href="/posts/<%= post._id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+    </div>
+  </div>
+<% }) %>

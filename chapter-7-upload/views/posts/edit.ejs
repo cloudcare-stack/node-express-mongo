@@ -1,0 +1,20 @@
+<h1>Edit Post</h1>
+
+<% if (error) { %>
+  <p style="color: red;"><%= error %></p>
+<% } %>
+
+<form method="POST" action="/posts/<%= post._id %>/edit">
+  <label>
+    Title
+    <input name="title" type="text" maxlength="120" required value="<%= post.title %>" />
+  </label>
+
+  <label>
+    Content
+    <textarea name="content" rows="8" maxlength="5000" required><%= post.content %></textarea>
+  </label>
+
+  <button type="submit">Save Changes</button>
+  <a href="/posts/<%= post._id %>">Cancel</a>
+</form>
