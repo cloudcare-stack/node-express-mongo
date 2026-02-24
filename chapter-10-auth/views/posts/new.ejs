@@ -1,0 +1,35 @@
+<h1 class="text-center mb-4">New Post</h1>
+
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-6">
+
+    <% if (error) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+
+    <% const f = form || {}; %>
+
+    <form method="POST" action="/posts" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input name="title" class="form-control" maxlength="120" required value="<%= f.title || '' %>">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Content</label>
+        <textarea name="content" rows="6" class="form-control" maxlength="5000" required><%= f.content || '' %></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Image (optional)</label>
+        <input type="file" name="image" class="form-control" accept="image/*">
+        <div class="form-text">Max 3MB. JPG/PNG/GIF/WEBP.</div>
+      </div>
+
+      <div class="d-grid">
+        <button class="btn btn-primary" type="submit">Create Post</button>
+      </div>
+    </form>
+
+  </div>
+</div>
