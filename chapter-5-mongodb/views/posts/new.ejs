@@ -1,4 +1,26 @@
+<% const f = form || {}; %>
+
 <h1>New Post</h1>
+
+<% if (error) { %>
+  <p style="color:red;"><%= error %></p>
+<% } %>
+
+<form method="POST" action="/posts">
+  <label>
+    Title
+    <input name="title" type="text" maxlength="120" required value="<%= f.title || "" %>" />
+  </label>
+
+  <label>
+    Content
+    <textarea name="content" rows="8" maxlength="5000" required><%= f.content || "" %></textarea>
+  </label>
+
+  <button type="submit">Create Post</button>
+</form>
+
+<!-- <h1>New Post</h1>
 
 <form method="POST" action="/posts">
   <label>
@@ -12,4 +34,4 @@
   </label>
 
   <button type="submit">Create Post</button>
-</form>
+</form> -->

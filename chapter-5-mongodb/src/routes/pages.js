@@ -7,6 +7,7 @@ router.get("/", async (req, res) => {
   res.render("index", { title: "Home", posts });
 });
 
+router.get("/", (req, res) => res.redirect("/posts"));
 router.get("/about", (req, res) => res.render("about", { title: "About" }));
 router.get("/contact", (req, res) => res.render("contact", { title: "Contact" }));
 

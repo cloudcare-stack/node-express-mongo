@@ -1,0 +1,19 @@
+<h1>All Posts</h1>
+
+<p><a href="/posts/new">+ New Post</a></p>
+
+<% if (!posts || posts.length === 0) { %>
+  <p>No posts yet.</p>
+<% } else { %>
+  <% posts.forEach((p) => { %>
+    <article class="post">
+      <h2><a href="/posts/<%= p._id %>"><%= p.title %></a></h2>
+      <small><%= new Date(p.createdAt).toLocaleString() %></small>
+      <p><%= (p.content || "").slice(0, 140) %><%= (p.content || "").length > 140 ? "..." : "" %></p>
+      <p>
+        <a href="/posts/<%= p._id %>">View</a> |
+        <a href="/posts/<%= p._id %>/edit">Edit</a>
+      </p>
+    </article>
+  <% }) %>
+<% } %>

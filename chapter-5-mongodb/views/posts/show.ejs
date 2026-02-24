@@ -1,0 +1,18 @@
+<article class="post">
+  <h1><%= post.title %></h1>
+  <small>Created: <%= new Date(post.createdAt).toLocaleString() %></small>
+  <% if (post.updatedAt && post.updatedAt !== post.createdAt) { %>
+    <br /><small>Updated: <%= new Date(post.updatedAt).toLocaleString() %></small>
+  <% } %>
+
+  <p style="white-space: pre-wrap;"><%= post.content %></p>
+
+  <p>
+    <a href="/posts">← All posts</a> |
+    <a href="/posts/<%= post._id %>/edit">Edit</a>
+  </p>
+
+  <form method="POST" action="/posts/<%= post._id %>/delete" onsubmit="return confirm('Delete this post?');">
+    <button type="submit">Delete</button>
+  </form>
+</article>
