@@ -1,0 +1,33 @@
+<div class="row justify-content-center align-items-center" style="min-height: 50vh;">
+  <div class="col-md-5 col-lg-8">
+
+    <div class="card shadow-sm p-4">
+      <h2 class="text-center mb-4">Login</h2>
+
+      <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/login" class="vstack gap-3">
+
+        <div>
+          <label class="form-label">Email</label>
+          <input class="form-control" type="email" name="email" required value="<%= form.email || '' %>">
+        </div>
+
+        <div>
+          <label class="form-label">Password</label>
+          <input class="form-control" type="password" name="password" required>
+        </div>
+
+        <button class="btn btn-primary w-100" type="submit">Login</button>
+
+        <div class="text-center mt-8">
+          <small>No account? <a href="/register">Register</a></small>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>
