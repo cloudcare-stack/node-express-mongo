@@ -1,20 +1,19 @@
-const path = require('path');
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-// Route for the home page
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'views', 'index.html'));
+const postsRouter = require("./posts");
+
+router.get("/", (req, res) => {
+  // postsRouter.posts is our temporary store
+  res.render("index", { title: "Home", posts: postsRouter.posts || [] });
 });
 
-// Route for the about page
-router.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'views', 'about.html'));
+router.get("/about", (req, res) => {
+  res.render("about", { title: "About" });
 });
 
-// Route for the contact page
-router.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'views', 'contact.html'));
+router.get("/contact", (req, res) => {
+  res.render("contact", { title: "Contact" });
 });
 
 module.exports = router;
