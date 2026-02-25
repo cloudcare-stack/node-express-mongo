@@ -1,122 +1,106 @@
-📝 Full-Stack Blog Application
-Node.js • Express • MongoDB Atlas • MVC Architecture
+# 📝 Full-Stack Blog Application  
+### Node.js • Express • MongoDB Atlas • MVC Architecture
 
-A production-style blog platform built with Node.js, Express, MongoDB (Atlas), and EJS, implementing secure authentication, ownership-based authorization, relational data modeling, and optimized database querying.
+A production-style blog platform built with **Node.js, Express, MongoDB (Atlas), and EJS**, implementing secure authentication, ownership-based authorization, relational data modeling, and optimized database querying.
 
 This project demonstrates backend architecture design, session management, cloud database integration, and secure multi-user access control.
 
-🚀 Key Highlights
+---
 
-🔐 Authentication & Session Management
+## 🚀 Key Highlights
 
-User registration & login
+### 🔐 Authentication & Session Management
+- User registration & login
+- Password hashing with bcrypt
+- Express-session with MongoDB session store
+- Secure session cookies
 
-Password hashing with bcrypt
+### 🛡 Authorization & Ownership Control
+- Route-level protection middleware
+- Ownership validation in controller layer
+- Users can edit/delete only their own posts
+- Conditional UI rendering based on permissions
 
-Express-session with MongoDB session store
+### 🔗 Relational Data Modeling
+- One-to-many relationship: **User → Posts**
+- Mongoose `ref` + `populate()` implementation
+- “View all posts by this user” functionality
 
-Secure session cookies
+### ☁ Cloud Database Integration
+- MongoDB Atlas configuration
+- Environment variable management
+- Production-ready connection handling
 
-🛡 Authorization & Ownership Control
+### 🖼 File Uploads
+- Image upload handling with Multer
+- Dynamic image rendering in views
 
-Route-level protection middleware
+### ⚡ Query Optimization
+- `.select()` to reduce payload size
+- `.lean()` for performance improvement
+- Indexed fields for efficient querying
+- Targeted `.populate()` usage
 
-Ownership validation in controller layer
+---
 
-Users can edit/delete only their own posts
+## 🏗 Architecture Overview
 
-Conditional UI rendering based on permissions
-
-🔗 Relational Data Modeling
-
-One-to-many relationship: User → Posts
-
-Mongoose ref + populate() implementation
-
-“View all posts by this user” functionality
-
-☁ Cloud Database Integration
-
-MongoDB Atlas configuration
-
-Environment variable management
-
-Production-ready connection handling
-
-🖼 File Uploads
-
-Image upload handling with Multer
-
-Dynamic image rendering in views
-
-⚡ Query Optimization
-
-.select() to reduce payload size
-
-.lean() for performance improvement
-
-Indexed fields for efficient querying
-
-Targeted .populate() usage
-
-🏗 Architecture Overview
-
-This application follows the Model-View-Controller (MVC) pattern for scalability and maintainability.
-
+This application follows the **Model-View-Controller (MVC)** pattern for scalability and maintainability.
+```
 src/
- ├── controllers/
- ├── models/
- ├── routes/
- ├── middleware/
- ├── config/
- ├── app.js
- └── server.js
+├── controllers/
+├── models/
+├── routes/
+├── middleware/
+├── config/
+├── app.js
+└── server.js
+```
 
- Application Flow
+
+### Application Flow
+
+```
 Client Request
-   ↓
+↓
 Routes
-   ↓
+↓
 Middleware (Auth / Ownership)
-   ↓
+↓
 Controllers
-   ↓
+↓
 Models (Mongoose)
-   ↓
+↓
 MongoDB Atlas
+```
 
-🛠 Technology Stack
+---
 
-Backend
+## 🛠 Technology Stack
 
-Node.js
+### Backend
+- Node.js
+- Express
+- MongoDB
+- MongoDB Atlas
+- Mongoose
 
-Express
+### Authentication
+- express-session
+- connect-mongo
+- bcrypt
 
-MongoDB
+### Frontend
+- EJS templating
+- Bootstrap
+- Multer (file uploads)
 
-MongoDB Atlas
+---
 
-Mongoose
+## 👨‍💻 Author
 
-Authentication
-
-express-session
-
-connect-mongo
-
-bcrypt
-
-Frontend
-
-EJS templating
-
-Bootstrap
-
-Multer (file uploads)
-
-👨‍💻 Author
-
-Colin McAteer
-Cybersecurity & Software Security Graduate Student
+**Colin McAteer**  
+Cybersecurity & Software Security Graduate Student  
 Arizona State University
+
+
